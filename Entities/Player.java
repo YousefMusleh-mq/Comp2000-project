@@ -12,8 +12,13 @@ public class Player extends Entity {
     // keep the better one
 
     public void swapBetter(Item newItem) { // If inventory is full, replaces the worst held item with the new one. If not full, simply adds it in
-        if (!this.inv.isFull()){ // not a full inv
+        if (newItem == null) {
+            return;
+        }
+
+        if (!this.inv.isFull()) {
             addItem(newItem);
+            stats.statsAdd(newItem.getStatUp());
             return;
         }
 

@@ -169,7 +169,7 @@ class main {
                     System.out.println("buhhhhfduhsfud");
                 }
                 // loot
-                controller.playersLootEnemies(players); //hey this worked                
+                controller.playersLootEnemies(alivePlayers); //hey this worked                
                 // go next room
                 Room currentRoom = dungeon.goNextRoom();
                 if (currentRoom.getRole() == RoomRole.END){
@@ -183,10 +183,9 @@ class main {
                 }
                 
                 // heal players
-                pOne.maxHeal();
-                pTwo.maxHeal();
-                pThree.maxHeal();
-                pFour.maxHeal();
+                for (Player survivor : alivePlayers) {
+                    survivor.maxHeal();
+                }
             }    
             
             if (status == CombatController.CombatStatus.ENEMIES_WIN){
